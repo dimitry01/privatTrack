@@ -43,6 +43,7 @@ export default {
         this.$store.dispatch('checkUser')
         .then(res => {
             this.$vs.loading.close();
+            console.log(res);
             if (!res[0].length)
                 this.$router.push({path: '/register'});
         })
