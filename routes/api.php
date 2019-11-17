@@ -58,7 +58,7 @@ Route::get('/set/stats/clickers', 'CampaignsController@setClickers');
 Route::post('/campaigns/click', 'CampaignsController@saveClick');
 Route::post('/campaigns/open', 'CampaignsController@saveOpen');
 
-Route::get('/create', 'SettingsController@createUser');
+Route::post('/create', 'SettingsController@createUser');
 Route::get('/check', 'SettingsController@checkUser');
 
 

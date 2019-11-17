@@ -43,7 +43,7 @@ export default {
         this.$store.dispatch('checkUser')
         .then(res => {
             this.$vs.loading.close();
-            if (res.length > 0)
+            if (res[0].length > 0)
                 this.$router.push({path: '/login'});
         })
     },

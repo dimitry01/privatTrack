@@ -64,7 +64,7 @@ const mutations = {
 	loginSuccess(state, payload){
 		state.auth_error = null;
 		state.isLoggedIn = true;
-		console.log(payload.access_token);
+		//console.log(payload.access_token);
 		state.currentUser = Object.assign({}, payload.user, {token: payload.access_token});
 		localStorage.setItem("user", JSON.stringify(state.currentUser));
 		axios.defaults.headers.common["Authorization"] = `Bearer ${state.currentUser.token}`
