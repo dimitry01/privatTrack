@@ -43,7 +43,6 @@ export default {
         this.$store.dispatch('checkUser')
         .then(res => {
             this.$vs.loading.close();
-            console.log(res);
             if (!res[0].length)
                 this.$router.push({path: '/register'});
         })
@@ -51,7 +50,6 @@ export default {
     methods: {
         authenticate(){
             this.$store.dispatch('login');
-            
             login(this.$data.form)
             .then((res) => {
                 this.$store.commit('loginSuccess', res);
