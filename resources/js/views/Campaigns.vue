@@ -212,6 +212,7 @@ export default{
 				this.audience.campaign = this.campaigns.filter(c => c.id == id)[0];
 			}
 		},
+		
 		exportAudience(){
 			if (this.audience.campaign && this.audience.country && this.audience.action){
 				this.$store.dispatch('exportAudience', this.audience)
