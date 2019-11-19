@@ -153,6 +153,8 @@ const actions = {
 					commit('EXPORT_CSV', res.data)
 					resolve('1')
 				}
+				else
+					resolve('0')
 			})
 		})
 	},
@@ -167,6 +169,8 @@ const actions = {
 					commit('EXPORT_CSV', res.data)
 					resolve('1')
 				}
+				else
+					resolve('0')
 			})
 		})
 	},
@@ -181,6 +185,8 @@ const actions = {
 					commit('EXPORT_CSV', res.data)
 					resolve('1')
 				}
+				else
+					resolve('0')
 			})
 		})
 	},
@@ -195,6 +201,8 @@ const actions = {
 					commit('EXPORT_CSV', res.data)
 					resolve('1')
 				}
+				else
+					resolve('0')
 			})
 		})
 	},
@@ -209,6 +217,8 @@ const actions = {
 					commit('EXPORT_CSV', res.data)
 					resolve('1')
 				}
+				else
+					resolve('0')
 			})
 		})
 	},
