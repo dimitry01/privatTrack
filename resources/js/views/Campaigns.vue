@@ -192,7 +192,6 @@ export default{
 			})
 		},
 		exportData(type, id){
-			console.log("ok");
 			if(type == 'open'){
 				this.$store.dispatch('exportOpens', id)
 				.then(res => {

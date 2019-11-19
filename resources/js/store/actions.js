@@ -147,7 +147,6 @@ const actions = {
 			commit('UPDATE_EXPPERCENTAGE', 1)
 			axios.get(`/api/campaigns/export/opens/${id}`)
 			.then((res) => {
-				console.log(res.data)
 				commit('UPDATE_EXPPERCENTAGE', 0)
 				if (res.data.result.length)
 				{
@@ -164,7 +163,6 @@ const actions = {
 			commit('UPDATE_EXPPERCENTAGE', 1)
 			axios.get(`/api/campaigns/export/clicks/${id}`)
 			.then((res) => {
-				console.log(res.data)
 				commit('UPDATE_EXPPERCENTAGE', 0)
 				if (res.data.result.length)
 				{
@@ -181,7 +179,6 @@ const actions = {
 			commit('UPDATE_EXPPERCENTAGE', 1)
 			axios.get(`/api/files/export/${id}`)
 			.then((res) => {
-				console.log(res.data)
 				commit('UPDATE_EXPPERCENTAGE', 0)
 				if (res.data.result.length)
 				{
@@ -198,7 +195,6 @@ const actions = {
 			commit('UPDATE_EXPPERCENTAGE', 1)
 			axios.get(`/api/campaigns/export/noopens/${id}`)
 			.then((res) => {
-				console.log(res.data)
 				commit('UPDATE_EXPPERCENTAGE', 0)
 				if (res.data.result.length)
 				{
@@ -216,7 +212,6 @@ const actions = {
 			axios.post(`/api/campaigns/export/audience`, {campaign: data.campaign.id, action: data.action, country: data.country.name})
 			.then((res) => {
 				commit('UPDATE_EXPPERCENTAGE', 0)
-				console.log(res.data)
 				if (res.data.result.length)
 				{
 					commit('EXPORT_CSV', res.data)
