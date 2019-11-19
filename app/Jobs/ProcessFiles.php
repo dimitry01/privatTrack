@@ -37,11 +37,11 @@ class ProcessFiles implements ShouldQueue
     {   
         $file = File::find($this->id);
         //$path = $this->path . ".txt";
-        //$handle = fopen("/home/ztracker/public_html/storage/files/".$path, "r");
-        //file_put_contents('/home/ztracker/public_html/storage/files/dd.txt',$this->path);
+        //$handle = fopen("/home/vinnapposs/public_html/storage/files/".$path, "r");
+        //file_put_contents('/home/vinnapposs/public_html/storage/files/dd.txt',$this->path);
         // this one below for panel
-        //$handle = fopen("/home/ztracker/public_html/storage/".$this->path, "r");
-        $handle = fopen("public/storage/".$this->path, "r");
+        $handle = fopen("/home/vinnapposs/public_html/storage/".$this->path, "r");
+        //$handle = fopen("public/storage/".$this->path, "r");
         if ($handle) {
             while (($buffer = fgets($handle, 4096)) !== false) {
                 if (strlen($buffer) > 5){

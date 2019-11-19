@@ -143,43 +143,73 @@ const actions = {
 		});
 	},
 	exportOpens({commit}, id){
-		commit('UPDATE_EXPPERCENTAGE', 1)
-		axios.get(`/api/campaigns/export/opens/${id}`)
-		.then((res) => {
-			commit('UPDATE_EXPPERCENTAGE', 0)
-			commit('EXPORT_CSV', res.data)
+		return new Promise((resolve,reject) => {
+			commit('UPDATE_EXPPERCENTAGE', 1)
+			axios.get(`/api/campaigns/export/opens/${id}`)
+			.then((res) => {
+				commit('UPDATE_EXPPERCENTAGE', 0)
+				if (res.data.result.length)
+				{
+					commit('EXPORT_CSV', res.data)
+					resolve('1')
+				}
+			})
 		})
 	},
 	exportClicks({commit}, id){
-		commit('UPDATE_EXPPERCENTAGE', 1)
-		axios.get(`/api/campaigns/export/clicks/${id}`)
-		.then((res) => {
-			commit('UPDATE_EXPPERCENTAGE', 0)
-			commit('EXPORT_CSV', res.data)
+		return new Promise((resolve,reject) => {
+			commit('UPDATE_EXPPERCENTAGE', 1)
+			axios.get(`/api/campaigns/export/clicks/${id}`)
+			.then((res) => {
+				commit('UPDATE_EXPPERCENTAGE', 0)
+				if (res.data.result.length)
+				{
+					commit('EXPORT_CSV', res.data)
+					resolve('1')
+				}
+			})
 		})
 	},
 	exportVisitors({commit}, id){
-		commit('UPDATE_EXPPERCENTAGE', 1)
-		axios.get(`/api/files/export/${id}`)
-		.then((res) => {
-			commit('UPDATE_EXPPERCENTAGE', 0)
-			commit('EXPORT_CSV', res.data)
+		return new Promise((resolve,reject) => {
+			commit('UPDATE_EXPPERCENTAGE', 1)
+			axios.get(`/api/files/export/${id}`)
+			.then((res) => {
+				commit('UPDATE_EXPPERCENTAGE', 0)
+				if (res.data.result.length)
+				{
+					commit('EXPORT_CSV', res.data)
+					resolve('1')
+				}
+			})
 		})
 	},
 	exportNoOpen({commit}, id){
-		commit('UPDATE_EXPPERCENTAGE', 1)
-		axios.get(`/api/campaigns/export/noopens/${id}`)
-		.then((res) => {
-			commit('UPDATE_EXPPERCENTAGE', 0)
-			commit('EXPORT_CSV', res.data)
+		return new Promise((resolve,reject) => {
+			commit('UPDATE_EXPPERCENTAGE', 1)
+			axios.get(`/api/campaigns/export/noopens/${id}`)
+			.then((res) => {
+				commit('UPDATE_EXPPERCENTAGE', 0)
+				if (res.data.result.length)
+				{
+					commit('EXPORT_CSV', res.data)
+					resolve('1')
+				}
+			})
 		})
 	},
 	exportAudience({commit}, data){
-		commit('UPDATE_EXPPERCENTAGE', 1)
-		axios.post(`/api/campaigns/export/audience`, {campaign: data.campaign.id, action: data.action, country: data.country.name})
-		.then((res) => {
-			commit('UPDATE_EXPPERCENTAGE', 0)
-			commit('EXPORT_CSV', res.data)
+		return new Promise((resolve,reject) => {
+			commit('UPDATE_EXPPERCENTAGE', 1)
+			axios.post(`/api/campaigns/export/audience`, {campaign: data.campaign.id, action: data.action, country: data.country.name})
+			.then((res) => {
+				commit('UPDATE_EXPPERCENTAGE', 0)
+				if (res.data.result.length)
+				{
+					commit('EXPORT_CSV', res.data)
+					resolve('1')
+				}
+			})
 		})
 	},
 	refreshFile({commit}, id){

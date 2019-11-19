@@ -193,11 +193,29 @@ export default{
 		},
 		exportData(type, id){
 			if(type == 'open'){
-				this.$store.dispatch('exportOpens', id);
+				this.$store.dispatch('exportOpens', id)
+				.then(res => {
+					this.$vs.notify({title:'Success',text:'Data exported',color: '#28C76F',position:'top-center'})
+				})
+				.catch(err => {
+					this.$vs.notify({title:'Error',text:'Export Failed',color: '#FF9F43',position:'top-center'})
+				})
 			} else if (type == 'noopen') {
-				this.$store.dispatch('exportNoOpen', id);
+				this.$store.dispatch('exportNoOpen', id)
+				.then(res => {
+					this.$vs.notify({title:'Success',text:'Data exported',color: '#28C76F',position:'top-center'})
+				})
+				.catch(err => {
+					this.$vs.notify({title:'Error',text:'Export Failed',color: '#FF9F43',position:'top-center'})
+				})
 			} else if (type == 'click') {
-				this.$store.dispatch('exportClicks', id);
+				this.$store.dispatch('exportClicks', id)
+				.then(res => {
+					this.$vs.notify({title:'Success',text:'Data exported',color: '#28C76F',position:'top-center'})
+				})
+				.catch(err => {
+					this.$vs.notify({title:'Error',text:'Export Failed',color: '#FF9F43',position:'top-center'})
+				})
 			} else if (type == 'audience') {
 				this.audiencePrompt = true;
 				this.audience.campaign = this.campaigns.filter(c => c.id == id)[0];
@@ -205,7 +223,13 @@ export default{
 		},
 		exportAudience(){
 			if (this.audience.campaign && this.audience.country && this.audience.action){
-				this.$store.dispatch('exportAudience', this.audience);
+				this.$store.dispatch('exportAudience', this.audience)
+				.then(res => {
+					this.$vs.notify({title:'Success',text:'Data exported',color: '#28C76F',position:'top-center'})
+				})
+				.catch(err => {
+					this.$vs.notify({title:'Error',text:'Export Failed',color: '#FF9F43',position:'top-center'})
+				})
 				this.audiencePrompt = false;
 			}
 			else
