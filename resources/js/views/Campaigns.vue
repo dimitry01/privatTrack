@@ -196,17 +196,17 @@ export default{
 			if(type == 'open'){
 				this.$store.dispatch('exportOpens', id)
 				.then(res => {
-					notify_export(res);
+					this.notify_export(res);
 				})
 			} else if (type == 'noopen') {
 				this.$store.dispatch('exportNoOpen', id)
 				.then(res => {
-					notify_export(res);
+					this.notify_export(res);
 				})
 			} else if (type == 'click') {
 				this.$store.dispatch('exportClicks', id)
 				.then(res => {
-					notify_export(res);
+					this.notify_export(res);
 				})
 			} else if (type == 'audience') {
 				this.audiencePrompt = true;
@@ -217,7 +217,7 @@ export default{
 			if (this.audience.campaign && this.audience.country && this.audience.action){
 				this.$store.dispatch('exportAudience', this.audience)
 				.then(res => {
-					notify_export(res);
+					this.notify_export(res);
 				})
 				this.audiencePrompt = false;
 			}
