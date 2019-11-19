@@ -210,49 +210,33 @@ export default{
             loading: false,
             txt_script_click: `<?php
                 $arr = array();
-
                 $arr['campaign'] = ${this.$route.params.id};
-                $arr['email'] = @$_GET['idnip'];
-                $arr['payout'] = 0;
+                $arr['email'] = @$_GET['ID_EMAIL_HERE'];
                 $arr['data'] = array();
                 $arr['data'] ['ip'] = @$_SERVER['REMOTE_ADDR'];
                 $arr['data'] ['user_agent'] = @$_SERVER['HTTP_USER_AGENT'];
-                $arr['data'] ['refer'] = @$_SERVER['HTTP_REFERER'];
-
                 $data_string = json_encode($arr);
-
-                echo $data_string;
-
-                $ch = curl_init('${window.location.host.split(':')[0]}/api/campaigns/click'); 
+                $ch = curl_init('https://${window.location.host.split(':')[0]}/api/c_pvt_trck/c_c_em'); 
                 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
                 curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                 curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Content-Length: ' . strlen($data_string)));
-
                 $result = curl_exec($ch); 
 
             ?>`,
                 txt_script_open: `<?php
                 $arr = array();
-
                 $arr['campaign'] = ${this.$route.params.id};
-                $arr['email'] = @$_GET['idnip'];
-                $arr['payout'] = 0;
+                $arr['email'] = @$_GET['ID_EMAIL_HERE'];
                 $arr['data'] = array();
                 $arr['data'] ['ip'] = @$_SERVER['REMOTE_ADDR'];
                 $arr['data'] ['user_agent'] = @$_SERVER['HTTP_USER_AGENT'];
-                $arr['data'] ['refer'] = @$_SERVER['HTTP_REFERER'];
-
                 $data_string = json_encode($arr);
-
-                echo $data_string;
-
-                $ch = curl_init('${window.location.host.split(':')[0]}/api/campaigns/open'); 
+                $ch = curl_init('https://${window.location.host.split(':')[0]}/api/c_pvt_trck/c_o_em'); 
                 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
                 curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                 curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Content-Length: ' . strlen($data_string)));
-
                 $result = curl_exec($ch); 
 
             ?>`,

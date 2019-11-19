@@ -230,7 +230,7 @@ export default{
 			if (res == '1')
 				this.$vs.notify({title:'Success',text:'Data exported',color: '#28C76F',position:'top-center'})
 			else
-				this.$vs.notify({title:'Error',text:'Export Failed',color: '#FF9F43',position:'top-center'})
+				this.$vs.notify({title:'Error',text:'No Users Found',color: '#FF9F43',position:'top-center'})
 		}
 	},
 	computed: {

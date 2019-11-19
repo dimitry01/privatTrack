@@ -8,7 +8,7 @@
 						<div  class="vx-row">
 
 							<div class="vx-col sm:w-2/3 w-full mb-2">
-								<vs-input class="w-full" label-placeholder="User Agent Token" v-model="settings.token" />
+								<vs-input class="w-full" label-placeholder="Proxy Token" v-model="settings.token" />
 							</div>
 							<div class="vx-col sm:w-1/4 w-full mt-4">
 								<vs-button @click="saveSettings('token')" >Save Token</vs-button>

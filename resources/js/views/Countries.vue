@@ -33,7 +33,7 @@
 										<span>{{data[indextr].name}}</span>
 									</vs-td>
 									<vs-td :data="data[indextr].id">
-										<vs-button color="primary" type="gradient" @click.prevent="deleteCountry(tr.id)">Delete</vs-button>
+										<vs-button color="danger" type="gradient" @click.prevent="deleteCountry(tr.id)">Delete</vs-button>
 									</vs-td>
 								</vs-tr>
 							</template>

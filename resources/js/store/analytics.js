@@ -87,7 +87,7 @@ export default {
                 let browsers = [];
                 for(let browser in result){
                     let ratio = parseInt((result[browser].length/selected.length) * 100)
-                    let data = {name: browser, ratio: ratio}
+                    let data = {name: browser.charAt(0).toUpperCase(), ratio: ratio}
                     browsers.push(data);
                 }
                 browsers = browsers.sort((b1, b2) => b2.ratio - b1.ratio);
