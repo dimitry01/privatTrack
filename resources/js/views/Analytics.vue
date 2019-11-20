@@ -70,7 +70,7 @@
                                                 <vs-tr :key="indextr" v-for="(tr, indextr) in data">
                                                     <vs-td>
                                                         <span v-if="tr.country == null">Others</span>
-                                                        <span v-else>{{tr.country}}</span>
+                                                        <span v-else>{{tr.country | capitalize}}</span>
                                                     </vs-td>
                                                     <vs-td>
                                                         <span>{{tr.opens}}</span>
@@ -96,7 +96,7 @@
                                                 <vs-tr :key="indextr" v-for="(tr, indextr) in data">
                                                     <vs-td>
                                                         <span v-if="tr.isp == null">Others</span>
-                                                        <span v-else>{{tr.isp}}</span>
+                                                        <span v-else>{{tr.isp | capitalize}}</span>
                                                     </vs-td>
                                                     <vs-td>
                                                         <span>{{tr.opens}}</span>
@@ -122,7 +122,7 @@
                                                 <vs-tr  :key="indextr" v-for="(tr, indextr) in data">
                                                     <vs-td>
                                                         <span v-if="tr.os == null">Others</span>
-                                                        <span v-else>{{tr.os}}</span>
+                                                        <span v-else>{{tr.os | capitalize}}</span>
                                                     </vs-td>
                                                     <vs-td>
                                                         <span>{{tr.opens}}</span>
@@ -151,7 +151,7 @@
                         <div class="flex justify-between">
                             <div class="flex flex-col">
                                 <span class="mb-1" v-if="browser.name == 'null'">Others</span>
-                                <span class="mb-1" v-else>{{ browser.name }}</span>
+                                <span class="mb-1" v-else>{{ browser.name | capitalize }}</span>
                                 <h4>{{ browser.ratio }}%</h4>
                             </div>
                         </div>
@@ -291,7 +291,14 @@ export default{
 		StatisticsCardLine,
         ChangeTimeDurationDropdown,
         EventsDropdown,
-	},
+    },
+    filters: {
+        capitalize: function (value) {
+            if (!value) return ''
+            value = value.toString()
+            return value.charAt(0).toUpperCase() + value.slice(1)
+        }
+    }
 }
 </script>
 

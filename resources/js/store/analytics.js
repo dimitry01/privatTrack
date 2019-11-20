@@ -87,7 +87,6 @@ export default {
                 let browsers = [];
                 for(let browser in result){
                     let ratio = parseInt((result[browser].length/selected.length) * 100)
-                    browser.charAt(0).toUpperCase()
                     let data = {name: browser, ratio: ratio}
                     browsers.push(data);
                 }
