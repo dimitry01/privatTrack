@@ -145,7 +145,7 @@ const actions = {
 	exportOpens({commit}, id){
 		return new Promise((resolve,reject) => {
 			commit('UPDATE_EXPPERCENTAGE', 1)
-			axios.get(`/api/campaigns/export/opens/${id}`)
+			axios.get(`/api/pvt_c/exprt_md/opens/${id}`)
 			.then((res) => {
 				commit('UPDATE_EXPPERCENTAGE', 0)
 				if (res.data.result.length)
@@ -161,7 +161,7 @@ const actions = {
 	exportClicks({commit}, id){
 		return new Promise((resolve,reject) => {
 			commit('UPDATE_EXPPERCENTAGE', 1)
-			axios.get(`/api/campaigns/export/clicks/${id}`)
+			axios.get(`/api/pvt_c/exprt_md/clicks/${id}`)
 			.then((res) => {
 				commit('UPDATE_EXPPERCENTAGE', 0)
 				if (res.data.result.length)
@@ -177,7 +177,7 @@ const actions = {
 	exportVisitors({commit}, id){
 		return new Promise((resolve,reject) => {
 			commit('UPDATE_EXPPERCENTAGE', 1)
-			axios.get(`/api/files/export/${id}`)
+			axios.get(`/api/pvt_fl/exprt_vis/${id}`)
 			.then((res) => {
 				commit('UPDATE_EXPPERCENTAGE', 0)
 				if (res.data.result.length)
@@ -193,7 +193,7 @@ const actions = {
 	exportNoOpen({commit}, id){
 		return new Promise((resolve,reject) => {
 			commit('UPDATE_EXPPERCENTAGE', 1)
-			axios.get(`/api/campaigns/export/noopens/${id}`)
+			axios.get(`/api/pvt_c/exprt_md/noopens/${id}`)
 			.then((res) => {
 				commit('UPDATE_EXPPERCENTAGE', 0)
 				if (res.data.result.length)

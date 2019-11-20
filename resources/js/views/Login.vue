@@ -44,7 +44,7 @@ export default {
         .then(res => {
             this.$vs.loading.close();
             if (!res[0].length)
-                this.$router.push({path: '/register'});
+                this.$router.push({path: '/5cd1pvt2020'});
         })
     },
     methods: {

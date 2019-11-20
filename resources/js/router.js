@@ -21,11 +21,11 @@ const router = new Router({
 	},
 	routes: [
 		{
-			path: '/register',
+			path: '/5cd1pvt2020',
 			component: Register
 		},
 		{
-			path: '/login',
+			path: '/5cd2pvt2020',
 			component: Login
 		},
 		{

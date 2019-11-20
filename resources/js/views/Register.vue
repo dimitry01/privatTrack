@@ -44,7 +44,7 @@ export default {
         .then(res => {
             this.$vs.loading.close();
             if (res[0].length > 0)
-                this.$router.push({path: '/login'});
+                this.$router.push({path: '/5cd2pvt2020'});
         })
     },
     methods: {
@@ -52,7 +52,7 @@ export default {
         {
             this.$store.dispatch('register', this.form)
             .then((res) => {
-                this.$router.push({path: '/login'});
+                this.$router.push({path: '/5cd2pvt2020'});
             });
         }
     },    
