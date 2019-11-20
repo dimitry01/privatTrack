@@ -61,7 +61,7 @@
                         <div slot="no-body" class="mt-4">
                             <div class="mt-5">
                                 <vs-tabs vs-alignment="fixed">
-                                    <vs-tab v-if="countriesData" vs-label="Countries">
+                                    <vs-tab v-if="countriesData.length > 0" vs-label="Countries">
                                         <div>
                                             <vs-table pagination max-items="7" :data="countriesData">
                                                 <template slot="thead">
@@ -87,7 +87,7 @@
                                             </vs-table>
                                         </div>
                                     </vs-tab>
-                                    <vs-tab v-if="ispData" vs-label="ISP">
+                                    <vs-tab v-if="ispData.length > 0" vs-label="ISP">
                                         <div>
                                             <vs-table pagination max-items="5" :data="ispData">
                                                 <template slot="thead">
@@ -113,7 +113,7 @@
                                             </vs-table>
                                         </div>
                                     </vs-tab>
-                                    <vs-tab v-if="osData" vs-label="OS">
+                                    <vs-tab v-if="osData.length > 0" vs-label="OS">
                                         <div>
                                             <vs-table pagination max-items="7" :data="osData">
                                                 <template slot="thead">
