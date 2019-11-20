@@ -1,7 +1,11 @@
 <template>
 	<div id="dashboard-analytics">
         <div v-if="opens == 0">
-            No Statistics collected yet!
+            <div class="vx-row">
+                <div class="vx-col w-full sm:w-full md:w-1/2 lg:w-1/2 xl:w-1/2 mb-base center none">
+                    No Statistics collected yet!
+                </div>
+            </div>
         </div>
         <div v-else>
             <div class="vx-row">
@@ -86,7 +90,7 @@
                                                 </template>
                                             </vs-table>
                                         </div>
-                                        <div v-else>
+                                        <div v-else class="center none">
                                             <p>Nothing collected yet</p>
                                         </div>
                                     </vs-tab>
@@ -115,7 +119,7 @@
                                                 </template>
                                             </vs-table>
                                         </div>
-                                        <div v-else>
+                                        <div v-else class="center none">
                                             <p>Nothing collected yet</p>
                                         </div>
                                     </vs-tab>
@@ -144,7 +148,7 @@
                                                 </template>
                                             </vs-table>
                                         </div>
-                                        <div v-else>
+                                        <div v-else class="center none">
                                             <p>Nothing collected yet</p>
                                         </div>
                                     </vs-tab>
@@ -265,7 +269,6 @@ export default{
         this.$store.dispatch('analytics/fetchStats', this.$route.params.id)
         .then(res => {
             this.$vs.loading.close();
-            console.log(this.opens)
         });
     },
     computed: {
@@ -342,5 +345,11 @@ export default{
 			width: 140px;
 		}
 	}
+}
+.center {
+    text-align: center;
+}
+.none {
+    margin: 20px;
 }
 </style>
