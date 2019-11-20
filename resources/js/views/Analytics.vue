@@ -61,8 +61,8 @@
                         <div slot="no-body" class="mt-4">
                             <div class="mt-5">
                                 <vs-tabs vs-alignment="fixed">
-                                    <vs-tab v-if="countriesData.length > 0" vs-label="Countries">
-                                        <div>
+                                    <vs-tab vs-label="Countries">
+                                        <div v-if="countriesData.length > 0">
                                             <vs-table pagination max-items="7" :data="countriesData">
                                                 <template slot="thead">
                                                     <vs-th sort-key="country">COUNTRY</vs-th>
@@ -86,9 +86,12 @@
                                                 </template>
                                             </vs-table>
                                         </div>
+                                        <div v-else>
+                                            <p>Nothing collected yet</p>
+                                        </div>
                                     </vs-tab>
-                                    <vs-tab v-if="ispData.length > 0" vs-label="ISP">
-                                        <div>
+                                    <vs-tab vs-label="ISP">
+                                        <div v-if="ispData.length > 0">
                                             <vs-table pagination max-items="5" :data="ispData">
                                                 <template slot="thead">
                                                     <vs-th sort-key="isp">ISP</vs-th>
@@ -112,9 +115,12 @@
                                                 </template>
                                             </vs-table>
                                         </div>
+                                        <div v-else>
+                                            <p>Nothing collected yet</p>
+                                        </div>
                                     </vs-tab>
-                                    <vs-tab v-if="osData.length > 0" vs-label="OS">
-                                        <div>
+                                    <vs-tab vs-label="OS">
+                                        <div v-if="osData.length > 0">
                                             <vs-table pagination max-items="7" :data="osData">
                                                 <template slot="thead">
                                                     <vs-th sort-key="os">OS NAME</vs-th>
@@ -137,6 +143,9 @@
                                                     </vs-tr>
                                                 </template>
                                             </vs-table>
+                                        </div>
+                                        <div v-else>
+                                            <p>Nothing collected yet</p>
                                         </div>
                                     </vs-tab>
                                 </vs-tabs>
