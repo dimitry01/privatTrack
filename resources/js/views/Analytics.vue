@@ -70,7 +70,7 @@
                                                 <vs-tr :key="indextr" v-for="(tr, indextr) in data">
                                                     <vs-td>
                                                         <span v-if="tr.country == null">Others</span>
-                                                        <span v-else>{{tr.country.charAt(0).toUpperCase()}}</span>
+                                                        <span v-else>{{tr.country}}</span>
                                                     </vs-td>
                                                     <vs-td>
                                                         <span>{{tr.opens}}</span>
