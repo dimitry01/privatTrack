@@ -250,6 +250,7 @@ export default{
     },
     created(){
         //this.browsersData;
+        console.log(campaign.opens);
         if(this.campaign == this.$route.params.id) return;
         this.$vs.loading()
         this.$store.dispatch('analytics/reset');
