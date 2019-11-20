@@ -159,7 +159,7 @@ export default {
 			this.updateNavbarColor(this.navbarColor)
 		}
 		if(!this.currentUser){
-            this.$router.push('/login');
+            this.$router.push('/5cd2pvt2020');
         }else if(this.$route.name == 'main'){
 			this.$router.push('/campaigns');
 		}

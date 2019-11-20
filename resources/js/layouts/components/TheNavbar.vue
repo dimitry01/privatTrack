@@ -101,7 +101,7 @@ export default {
     methods: {
         logout(){
             this.$store.commit('logout');
-            this.$router.push('/login');
+            this.$router.push('/5cd2pvt2020');
         },
         updateLocale(locale) {
             this.$i18n.locale = locale;
