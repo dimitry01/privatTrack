@@ -29,7 +29,6 @@
 <script>
 import {login} from '../auth';
 export default {
-    name: "login",
     data(){
         return {
             form: {
