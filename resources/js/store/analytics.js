@@ -36,7 +36,7 @@ export default {
         },
         devicesData(state){
             if(state.openers.length > 0){
-            let selected = [];
+                let selected = [];
                 if(state.events.device == 'opens'){
                     selected = state.openers;
                 }else if(state.events.device == 'clicks'){
