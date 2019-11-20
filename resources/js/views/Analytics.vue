@@ -2,11 +2,9 @@
 	<div id="dashboard-analytics">
         <div v-if="opens == 0">
             <div class="vx-row">
-                <div class="vx-col w-full sm:w-full md:w-1/2 lg:w-1/2 xl:w-1/2 mb-base center none">
+                <div class="vx-col w-full mb-base center none">
                     <vx-card>
-                        <div slot="body">
-                            <h1>No Statistics collected for this campaign yet!</h1>
-                        </div>
+                        <h1>No Statistics collected for this campaign yet!</h1>
                     </vx-card>
                 </div>
             </div>
