@@ -70,6 +70,8 @@ export default {
 	},
 	watch: {
 		'$route'() {
+			console.log(this.routeTitle)
+			console.log(this.$route.meta.pageTitle)
 			this.routeTitle = this.$route.meta.pageTitle;
 		},
 		isThemeDark(val) {
