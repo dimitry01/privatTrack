@@ -1,6 +1,6 @@
 <template>
 	<div id="dashboard-analytics">
-        <div v-if="campaign.opens == 0">
+        <div v-if="opens == 0">
             No Statistics collected yet!
         </div>
         <div v-else>
@@ -259,13 +259,13 @@ export default{
     },
     created(){
         //this.browsersData;
-        console.log(this.campaign.opens);
         if(this.campaign == this.$route.params.id) return;
         this.$vs.loading()
         this.$store.dispatch('analytics/reset');
         this.$store.dispatch('analytics/fetchStats', this.$route.params.id)
         .then(res => {
             this.$vs.loading.close();
+            console.log(this.opens)
         });
     },
     computed: {
