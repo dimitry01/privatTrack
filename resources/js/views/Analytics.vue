@@ -11,7 +11,6 @@
         </div>
         <div v-else>
             <div class="vx-row">
-
                 <div class="vx-col w-full sm:w-full md:w-1/2 lg:w-1/2 xl:w-1/2 mb-base">
                     <statistics-card-line icon="BookOpenIcon" :statistic="opens" statisticTitle="Opens" :chartData="analyticsData.opensDesign" color='warning' type='area'></statistics-card-line>
                 </div>
@@ -19,8 +18,6 @@
                 <div class="vx-col w-full sm:w-full md:w-1/2 lg:w-1/2 xl:w-1/2 mb-base">
                     <statistics-card-line icon="PlayIcon" :statistic="clicks" statisticTitle="Clicks" :chartData="analyticsData.clicksDesign" color="primary" type='area'></statistics-card-line>
                 </div>
-
-            
             </div>
 
             <div class="vx-row">
@@ -30,7 +27,6 @@
                         <div slot="no-body">
                             <vue-apex-charts type=radialBar height=370 :options="analyticsData.actionsStatsRadial.chartOptions" :series="actionsData.series" />
                         </div>
-
                         <ul>
                             <li v-for="actionData in actionsData.analyticsData" :key="actionData.actionType" class="flex mb-3 justify-between">
                                 <span class="flex items-center">

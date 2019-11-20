@@ -30,7 +30,7 @@
 										<span>#{{data[indextr].id}}</span>
 									</vs-td>
 									<vs-td :data="data[indextr].name">
-										<span>{{data[indextr].name}}</span>
+										<span>{{data[indextr].name | capitalize}}</span>
 									</vs-td>
 									<vs-td :data="data[indextr].id">
 										<vs-button color="danger" type="gradient" @click.prevent="deleteCountry(tr.id)">Delete</vs-button>
@@ -118,7 +118,14 @@ export default{
     components: {
         Prism,
         VuePerfectScrollbar
-	}
+	},
+	filters: {
+        capitalize: function (value) {
+            if (!value) return ''
+            value = value.toString()
+            return value.charAt(0).toUpperCase() + value.slice(1)
+        }
+    }
 }
 </script>
 
