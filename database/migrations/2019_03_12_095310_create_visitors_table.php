@@ -23,7 +23,6 @@ class CreateVisitorsTable extends Migration
             $table->string('os')->nullable();
             $table->string('device')->nullable();
             $table->string('browser')->nullable();
-            $table->string('refer')->nullable();
             $table->string('country')->nullable();
             $table->string('city')->nullable();
             $table->string('isp')->nullable();

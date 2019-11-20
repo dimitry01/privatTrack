@@ -64,7 +64,6 @@ const mutations = {
 	loginSuccess(state, payload){
 		state.auth_error = null;
 		state.isLoggedIn = true;
-		//console.log(payload.access_token);
 		state.currentUser = Object.assign({}, payload.user, {token: payload.access_token});
 		localStorage.setItem("user", JSON.stringify(state.currentUser));
 		axios.defaults.headers.common["Authorization"] = `Bearer ${state.currentUser.token}`
@@ -95,7 +94,6 @@ const mutations = {
 		]
 		.join("\n")
 		.replace(/(^\[)|(\]$)/gm, "");
-
 		var blob = new Blob([csvContent], {type: "text/csv;charset=utf-8"});
 		saveAs(blob, `export_${payload.type}_${data.length}.csv`);
 	},

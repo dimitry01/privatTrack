@@ -29,23 +29,18 @@
                             </span>
                             <span>{{ actionData.counts }}</span>
                         </li>
-                        <!-- <li><span class="inline-block h-2 w-2 rounded-full mr-2 bg-primary"></span>Finished - 23,043</li> -->
                     </ul>
                 </vx-card>
             </div>
 
-             <!-- Sessions By Device -->
 			<div class="vx-col w-full lg:w-1/3">
 				<vx-card title="Device Statistics">
-					<!-- SLOT = ACTIONS -->
 					<template slot="actions">
                         <events-dropdown event="device" :selected="events.device" v-on:eventChanged="changeEvent" />
 					</template>
-
 					<div slot="no-body">
 						<vue-apex-charts type=donut height=325 :options="analyticsData.sessionsByDeviceDonut.chartOptions" :series="devicesData.series" />
 					</div>
-
 					<ul>
 						<li v-for="deviceData in devicesData.analyticsData" :key="deviceData.device" class="flex mb-3">
 							<feather-icon :icon="deviceData.icon" :svgClasses="[`h-5 w-5 stroke-current text-${deviceData.color}`]"></feather-icon>
@@ -56,8 +51,6 @@
 					</ul>
 				</vx-card>
 			</div>
-
-            
 
             <div class="vx-col md:w-1/3 lg:w-1/3 xl:w-1/3 w-full mb-base">
                 <vx-card>
@@ -77,7 +70,7 @@
                                                 <vs-tr :key="indextr" v-for="(tr, indextr) in data">
                                                     <vs-td>
                                                         <span v-if="tr.country == null">Others</span>
-                                                        <span v-else>{{tr.country}}</span>
+                                                        <span v-else>{{tr.country.charAt(0).toUpperCase()}}</span>
                                                     </vs-td>
                                                     <vs-td>
                                                         <span>{{tr.opens}}</span>
