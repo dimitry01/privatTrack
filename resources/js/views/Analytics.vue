@@ -285,18 +285,23 @@ export default{
             return this.$store.getters['analytics/clicks'];
         },
         devicesData(){
+            if (this.opens)
             return this.$store.getters['analytics/devicesData'];
         },
         browsersData(){
+            if (this.opens)
             return this.$store.getters['analytics/browsersData'];
         },
         countriesData(){
+            if (this.opens)
             return this.$store.getters['analytics/countriesData'];
         },
         ispData(){
+            if (this.opens)
             return this.$store.getters['analytics/ispData'];
         },
         osData(){
+            if (this.opens)
             return this.$store.getters['analytics/osData'];
         }
     },
