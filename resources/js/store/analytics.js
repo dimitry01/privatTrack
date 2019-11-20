@@ -109,12 +109,12 @@ export default {
     },
     mutations: {
         UPDATE_STATS(state, payload){
-            state.countries = payload.countries;
-            state.isps = payload.isp;
-            state.os = payload.os;
-            state.clickers = payload.clickers;
-            state.openers = payload.openers;
-            state.visitors = payload.visitors;
+            state.countries = (payload.countries) ? payload.countries : [];
+            state.isps = (payload.isp) ? payload.isp : [];
+            state.os = (payload.os) ? payload.os : [];
+            state.clickers = (payload.clickers) ? payload.clickers : [];
+            state.openers = (payload.openers) ? payload.openers : [];
+            state.visitors = (payload.visitors) ? payload.visitors : [];
         },
         CHANGE_EVENT(state, data){
             if(data.from == 'device'){
