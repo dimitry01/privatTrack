@@ -3,7 +3,11 @@
         <div v-if="opens == 0">
             <div class="vx-row">
                 <div class="vx-col w-full sm:w-full md:w-1/2 lg:w-1/2 xl:w-1/2 mb-base center none">
-                    No Statistics collected yet!
+                    <vx-card>
+                        <div slot="body">
+                            <h1>No Statistics collected for this campaign yet!</h1>
+                        </div>
+                    </vx-card>
                 </div>
             </div>
         </div>
