@@ -70,8 +70,6 @@ export default {
 	},
 	watch: {
 		'$route'() {
-			console.log(this.routeTitle)
-			console.log(this.$route.meta.pageTitle)
 			this.routeTitle = this.$route.meta.pageTitle;
 		},
 		isThemeDark(val) {
@@ -155,6 +153,8 @@ export default {
 	},
 	created() {
 		this.setSidebarWidth();
+					console.log(this.routeTitle)
+			console.log(this.$route.meta.pageTitle)
 		if(this.navbarColor == "#fff" && this.isThemeDark) {
 			this.updateNavbarColor("#10163a")
 		}else {
