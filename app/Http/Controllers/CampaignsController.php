@@ -216,5 +216,4 @@ class CampaignsController extends Controller
         $load = ['countries' => $countries, 'isp' => $isp, 'os' => $os, 'clickers' => $clickers, 'openers' => $openers, 'visitors' => $visitors];
         return $load;
     }
-
 }
