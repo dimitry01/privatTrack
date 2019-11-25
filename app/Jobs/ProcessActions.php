@@ -20,7 +20,7 @@ class ProcessActions implements ShouldQueue
     protected $hash;
     protected $action;
     protected $serv_data;
-    public $tries = 1;
+    public $tries = 5;
     /**
      * Create a new job instance.
      *
