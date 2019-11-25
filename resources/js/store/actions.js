@@ -249,6 +249,14 @@ const actions = {
 				resolve('0')
 			})
 		})
+	},
+	refreshStats({commit}){
+		return new Promise((resolve,reject) => {
+			axios.get('/api/set/stats/refresh')
+			.then((res) => {
+				resolve()
+			})
+		})
 	}
 }
 

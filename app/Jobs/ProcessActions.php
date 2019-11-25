@@ -50,8 +50,6 @@ class ProcessActions implements ShouldQueue
                     if(!$action)
                         $action = new Action();
                     if($action->open == 0){
-                        $campaign->opens = $campaign->opens + 1;
-                        $campaign->save();
                         $action->open = 1;
                         $action->visitor_id = $visitor->id;
                         $action->campaign_id = $campaign->id;
@@ -71,8 +69,6 @@ class ProcessActions implements ShouldQueue
                     if(!$action)
                         $action = new Action();
                     if($action->click == 0){
-                        $campaign->clicks = $campaign->clicks + 1;
-                        $campaign->save();
                         $action->click = 1;
                         $action->visitor_id = $visitor->id;
                         $action->campaign_id = $campaign->id;

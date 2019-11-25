@@ -96,6 +96,8 @@ class ProcessStats implements ShouldQueue
                 ->whereRaw('actions.campaign_id = '.$campaign->id.' and actions.open = 1')
                 ->select('visitors.*')
                 ->get();
+            $campaign->opens = sizeof($openers);
+            $campaign->save();
             $campaign->stats->openers = json_encode($openers);
             $campaign->stats->save();
         }
@@ -109,6 +111,8 @@ class ProcessStats implements ShouldQueue
                 ->whereRaw('actions.campaign_id = '.$campaign->id.' and actions.click = 1')
                 ->select('visitors.*')
                 ->get();
+            $campaign->clicks = sizeof($clickers);
+            $campaign->save();
             $campaign->stats->clickers = json_encode($clickers);
             $campaign->stats->save();
         }

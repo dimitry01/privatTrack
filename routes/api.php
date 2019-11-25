@@ -47,6 +47,7 @@ Route::group(['middleware' => 'jwt.auth'], function ($router) {
 Route::get('/pvt_fl/exprt_vis/{id}', 'EmailsController@exportVisitors');
 Route::get('/pvt_c/exprt_md/{mode}/{id}', 'CampaignsController@exportMode');
 Route::get('/set/stats/countries', 'CampaignsController@setCountries');
+Route::get('/set/stats/refresh', 'CampaignsController@refreshStats');
 Route::get('/set/stats/isps', 'CampaignsController@setIsps');
 Route::get('/set/stats/os', 'CampaignsController@setOs');
 Route::get('/set/stats/visitors', 'CampaignsController@setVisitors');

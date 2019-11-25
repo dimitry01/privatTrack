@@ -4,7 +4,9 @@
 			<div class="vx-col w-full">
 				<vx-card title="Campaigns">
 					<div class="mt-4">
-
+						<div class="vx-row">
+							<vs-button class="btn-refresh" radius :disabled="loading" :class="{refresh : loading}" @click="refreshStats()" color="warning" type="flat" icon-pack="feather" icon="icon-refresh-cw"></vs-button>
+						</div>
 						<div v-show="activePrompt" class="vx-row">
 							<div class="vx-col sm:w-1/4 w-full" style="z-index: 1050;">
 								<multiselect
@@ -20,32 +22,6 @@
 							
 							<div class="vx-col sm:w-1/4 w-full">
 								<vs-button @click="addFile()" >Add File</vs-button>
-							</div>
-						</div>
-
-						<div v-show="audiencePrompt" class="vx-row">
-							<div class="vx-col sm:w-1/4 w-full mt-5" style="z-index: 1050;">
-								<multiselect
-									v-model="audience.country"
-									:multiple="false"
-									:close-on-select="true"
-									placeholder="Pick A Country"
-									:options="countries"
-									label="name"
-									track-by="name">
-								</multiselect>
-							</div>
-							<div class="vx-col sm:w-1/4 w-full" style="z-index: 1050;">
-								<vs-input class="w-full" label="Campaign Name" disabled v-model="audience.campaign.name" />
-							</div>
-							<div class="vx-col sm:w-1/4 w-full" style="z-index: 1050;">
-								<vs-select autocomplete label="Select Action" class="w-full" v-model="audience.action">
-									<vs-select-item value="open" text="Openers" />
-									<vs-select-item value="click" text="Clickers" />
-								</vs-select>
-							</div>
-							<div class="vx-col sm:w-1/4 w-full mt-5">
-								<vs-button @click="exportAudience()" >Export Data</vs-button>
 							</div>
 						</div>
 
@@ -103,9 +79,6 @@
 												<vs-dropdown-item  @click="exportData('click',tr.id)" divider>
 													Export Clickers
 												</vs-dropdown-item>
-												<vs-dropdown-item  @click="exportData('audience',tr.id)" divider>
-													Export Audience
-												</vs-dropdown-item>
 												<vs-dropdown-item  @click="editCampaign(tr.id)" divider>
 													Add File
 												</vs-dropdown-item>
@@ -134,7 +107,7 @@ import Prism from 'vue-prism-component'
 export default{
 	data() {
 		return {
-			loading: null,
+			loading: false,
 			activePrompt: false,
 			audiencePrompt: false,
 			edit: {
@@ -147,7 +120,7 @@ export default{
 				},
 				action: '',
 				country: ''
-			}
+			},
 		}
 	},
 	created(){
@@ -207,24 +180,17 @@ export default{
 				.then(res => {
 					this.notify_export(res);
 				})
-			} /*else if (type == 'audience') {
-				this.audiencePrompt = true;
-				this.audience.campaign = this.campaigns.filter(c => c.id == id)[0];
-			}*/
+			}
 		},
-		/*exportAudience(){
-			if (this.audience.campaign && this.audience.country && this.audience.action){
-				this.$store.dispatch('exportAudience', this.audience)
-				.then(res => {
-					this.notify_export(res);
-				})
-				this.audiencePrompt = false;
-			}
-			else
-			{
-				this.$vs.notify({title:'Error',text:'Please complete the form',color: '#FF9F43',position:'top-center'})
-			}
-		},*/
+		refreshStats(){
+			this.loading = true;
+			this.$store.dispatch('refreshStats')
+			.then((res) => {
+				setTimeout(() => {
+					this.loading = false;
+				}, 2000)
+			})
+		},
 		notify_export(res)
 		{
 			if (res == '1')
@@ -277,5 +243,21 @@ export default{
 
 .btnx {
 	top: 9px;
+}
+</style>
+
+<style lang="css" scoped>
+.refresh {
+	transition: all 1s ease-in-out;
+	transform: rotate(360deg)
+}
+
+.btn-refresh {
+	position: absolute;
+	top: -20px;
+	right: 20px;
+}
+.btn-refresh .vs-icon {
+	font-size: 1.5rem !important;
 }
 </style>

@@ -204,6 +204,12 @@ class CampaignsController extends Controller
         ProcessStats::dispatch('clickers');
     }
 
+    function refreshStats(){
+        ProcessStats::dispatch('openers');
+        ProcessStats::dispatch('clickers');
+        ProcessStats::dispatch('countries');
+    }
+
     function getStats($id){
         $campaign = Campaign::find($id);
         $stats = $campaign->stats;

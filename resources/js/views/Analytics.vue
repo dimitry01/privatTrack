@@ -7,7 +7,7 @@
                         <h1>No Statistics collected for this campaign yet!</h1>
                     </vx-card>
                 </div>
-                 <div class="vx-col md:w-1/3 lg:w-1/3 xl:w-1/3 w-full mb-base">
+                 <div class="vx-col md:w-1/3 lg:w-1/3 xl:w-1/3 w-full m-auto mb-base">
                     <vx-card>
                         <div slot="no-body" class="mt-4">
                             <div class="mt-5">
