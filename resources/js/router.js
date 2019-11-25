@@ -9,6 +9,7 @@ import Analytics from './views/Analytics.vue';
 import Login from './views/Login.vue';
 import Register from './views/Register.vue';
 import Settings from './views/Settings.vue';
+import Home from './views/Home.vue';
 //import { settings } from 'cluster';
 
 Vue.use(Router)
@@ -27,6 +28,13 @@ const router = new Router({
 		{
 			path: '/5cd2pvt2020',
 			component: Login
+		},
+		{
+			path: '/home',
+			component: Home,
+			meta: {
+				requiresAuth: false
+			}
 		},
 		{
 			path: '/',
@@ -64,7 +72,7 @@ const router = new Router({
 		},
 		{
 			path: '*',
-			redirect: '/pages/error-404'
+			redirect: '/home'
 		}
 	],
 })

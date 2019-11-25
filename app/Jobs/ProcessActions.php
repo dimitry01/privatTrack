@@ -105,7 +105,6 @@ class ProcessActions implements ShouldQueue
                 $visitor->browser = $agent['browser'];
             }
         }
-        $visitor->refer = $server['refer'] != null ? $server['refer'] : 'none';
         $visitor->save();
     }
 
@@ -149,28 +148,19 @@ class ProcessActions implements ShouldQueue
 
         $Visitor_IP =$ip;
     
-        $API_Key = "u5q34x-6ez770-7c7d29-472766"; // Supply your API key between the quotes if you have one
-        $VPN = "1"; // Change this to 1 if you wish to perform VPN Checks on your visitors
-        $TLS = "0"; // Change this to 1 to enable transport security, TLS is much slower though!
-        $TAG = "0"; // Change this to 1 to enable tagging of your queries (will show within your dashboard)
+        $API_Key = "u5q34x-6ez770-7c7d29-472766";
+        $VPN = "1";
+        $TLS = "0";
+        $TAG = "0";
         
-        // If you would like to tag this traffic with a specific description place it between the quotes.
-        // Without a custom tag entered below the domain and page url will be automatically used instead.
-        $Custom_Tag = ""; // Example: $Custom_Tag = "My Forum Signup Page";
+        $Custom_Tag = "";
     
-        // ------------------------------
-        // END OF SETTINGS
-        // ------------------------------
-    
-        // Setup the correct querying string for the transport security selected.
         if ( $TLS == 1 ) {
           $Transport_Type_String = "https://";
         } else {
           $Transport_Type_String = "http://";
         }
         
-        // By default the tag used is your querying domain and the webpage being accessed
-        // However you can supply your own descriptive tag or disable tagging altogether above.
         if ( $TAG == 1 && $Custom_Tag == "" ) {
           $Post_Field = "tag=" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
         } else if ( $TAG == 1 && $Custom_Tag != "" ) {
@@ -179,7 +169,6 @@ class ProcessActions implements ShouldQueue
           $Post_Field = "";
         }
         
-        // Performing the API query to proxycheck.io/v2/ using cURL
         $ch = curl_init($Transport_Type_String . 'proxycheck.io/v2/' . $Visitor_IP . '?key=' . $API_Key . '&vpn=' . $VPN . '&asn=1');
         
         $curl_options = array(
@@ -193,10 +182,8 @@ class ProcessActions implements ShouldQueue
         $API_JSON_Result = curl_exec($ch);
         curl_close($ch);
         
-        // Decode the JSON from our API
         $Decoded_JSON = json_decode($API_JSON_Result,True);
-        //print_r($Decoded_JSON);
-        // data 
+
         $country = $Decoded_JSON[$ip]['country'];
         $isp = $Decoded_JSON[$ip]['provider'];
         $proxy = $Decoded_JSON[$ip]['proxy'];
