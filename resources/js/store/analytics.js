@@ -58,8 +58,8 @@ export default {
                 if(isNaN(op)) op = 0 
 
                 let analyticsData = [
-                    { device: 'Dekstop', icon: 'MonitorIcon', color: 'primary', sessionsPercentage: parseFloat(dp).toFixed(1) },
                     { device: 'Mobile', icon: 'SmartphoneIcon', color: 'warning', sessionsPercentage: parseFloat(mp).toFixed(1) },
+                    { device: 'Dekstop', icon: 'MonitorIcon', color: 'primary', sessionsPercentage: parseFloat(dp).toFixed(1) },
                     { device: 'Tablet', icon: 'TabletIcon', color: 'danger', sessionsPercentage: parseFloat(tp).toFixed(1) },
                     { device: 'Others', icon: 'MoreHorizontalIcon', color: 'secondary', sessionsPercentage: parseFloat(op).toFixed(1) },
                 ]
