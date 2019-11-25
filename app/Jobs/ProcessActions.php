@@ -46,7 +46,7 @@ class ProcessActions implements ShouldQueue
             if($campaign){
                 $visitor = Visitor::where('hash_md5','=',$this->hash)->first();
                 if($visitor){
-                    $action = Action::whereRaw('visitor_id = '.$visitor->id.' and campaign_id = '.$campaign->id)->first();
+                    $action = Action::whereRaw('visitor_id = '.$visitor->id.' and campaign_id = '.$campaign->id)->lockForUpdate()->first();
                     if(!$action)
                         $action = new Action();
                     if($action->open == 0){
@@ -67,7 +67,7 @@ class ProcessActions implements ShouldQueue
             if($campaign){
                 $visitor = Visitor::where('hash_md5','=',$this->hash)->first();
                 if($visitor){
-                    $action = Action::whereRaw('visitor_id = '.$visitor->id .' and campaign_id = '.$campaign->id)->first();
+                    $action = Action::whereRaw('visitor_id = '.$visitor->id .' and campaign_id = '.$campaign->id)->lockForUpdate()->first();
                     if(!$action)
                         $action = new Action();
                     if($action->click == 0){
