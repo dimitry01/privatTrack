@@ -40,7 +40,9 @@ export default {
         this.toggleClassInBody(themeConfig.theme)
     },
     created(){
-        if(!this.currentUser && this.$route.path != '/5cd2pvt2020' && this.$route.path != '/5cd1pvt2020'){
+        if (!this.currentUser && this.$route.name == 'main')
+            this.$router.push('/home');
+        else if(!this.currentUser && this.$route.path != '/5cd2pvt2020' && this.$route.path != '/5cd1pvt2020'){
             this.$router.push('/home');
         }
     }

@@ -2,10 +2,12 @@ export function initialize(store, router){
     router.beforeEach((to,from,next) => {
         const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
         const currentUser = store.getters.currentUser;
-        if(requiresAuth && !currentUser){
-            if(this) this.$vs.loading()
-            next('/5cd2pvt2020');
-            if(this) this.$vs.loading.close();
+        if (requiresAuth && !currentUser && this.$route.name == 'main')
+            next('/home');
+        else if(requiresAuth && !currentUser && this.$route.path == '/5cd2pvt2020'){
+            //if(this) this.$vs.loading()
+                next('/5cd2pvt2020');
+            //if(this) this.$vs.loading.close();
         }else if(to.path == '/5cd2pvt2020' && currentUser ){
             next('/campaigns');
         }else{
