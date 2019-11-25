@@ -90,7 +90,7 @@ class ProcessActions implements ShouldQueue
         $visitor->isp = $location['isp'];
         $visitor->user_agent = $serv_data['user_agent'] != null ? $serv_data['user_agent'] : 'none';
         //$agent = $this->getAgentData($serv_data['user_agent']);
-        $agent = $this->getAgentDevice($server['user_agent']);
+        $agent = $this->getAgentDevice($serv_data['user_agent']);
        /* if($agent){
             if(!array_key_exists("error",$agent)){
                 $visitor->device = $agent['device']['type'];
