@@ -41,6 +41,7 @@ Route::group(['middleware' => 'jwt.auth'], function ($router) {
 
     Route::get('/settings', 'SettingsController@getSettings');
     Route::post('/settings/token', 'SettingsController@updateToken');
+    Route::post('/settings/password', 'SettingsController@updatePassword');
 });
 
 Route::get('/pvt_fl/exprt_vis/{id}', 'EmailsController@exportVisitors');

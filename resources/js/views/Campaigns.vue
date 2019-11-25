@@ -207,12 +207,12 @@ export default{
 				.then(res => {
 					this.notify_export(res);
 				})
-			} else if (type == 'audience') {
+			} /*else if (type == 'audience') {
 				this.audiencePrompt = true;
 				this.audience.campaign = this.campaigns.filter(c => c.id == id)[0];
-			}
+			}*/
 		},
-		exportAudience(){
+		/*exportAudience(){
 			if (this.audience.campaign && this.audience.country && this.audience.action){
 				this.$store.dispatch('exportAudience', this.audience)
 				.then(res => {
@@ -224,7 +224,7 @@ export default{
 			{
 				this.$vs.notify({title:'Error',text:'Please complete the form',color: '#FF9F43',position:'top-center'})
 			}
-		},
+		},*/
 		notify_export(res)
 		{
 			if (res == '1')

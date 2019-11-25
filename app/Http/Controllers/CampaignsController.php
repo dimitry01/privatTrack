@@ -96,7 +96,7 @@ class CampaignsController extends Controller
             ->whereRaw('actions.campaign_id = '.$request->campaign.' and actions.'.$request->action.' = 1 and visitors.country = "'.strtolower($request->country).'"')
             ->select('visitors.email')
             ->get();
-        return ['type' => 'audience', 'result' => $visitors];
+        return ['type' => 'audience', 'result' => $visitors, 'country' => $request->country, 'action' => $request->action];
     }
     
     //------------------------------------------------
@@ -140,7 +140,7 @@ class CampaignsController extends Controller
             $visitors = sizeof($fl->visitors);
             $campaign->emails += $visitors;
             $campaign->save(); 
-            return response()->json(['message' => 'File added successfully', 'campaign' => $campaign->id, 'file' => $request->file['id']]);
+            return response()->json(['message' => 'File added successfully', 'campaign' => $campaign->id, 'emails' => $visitors, 'file' => $request->file['id']]);
         }
         return response()->json(['message' => 'File already exist to this campaign']);
     }

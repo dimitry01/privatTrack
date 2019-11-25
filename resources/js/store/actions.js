@@ -209,7 +209,7 @@ const actions = {
 	exportAudience({commit}, data){
 		return new Promise((resolve,reject) => {
 			commit('UPDATE_EXPPERCENTAGE', 1)
-			axios.post(`/api/campaigns/export/audience`, {campaign: data.campaign.id, action: data.action, country: data.country.name})
+			axios.post(`/api/campaigns/export/audience`, {campaign: data.id, action: data.action, country: data.country})
 			.then((res) => {
 				commit('UPDATE_EXPPERCENTAGE', 0)
 				if (res.data.result.length)
@@ -223,7 +223,7 @@ const actions = {
 		})
 	},
 	refreshFile({commit}, id){
-		new Promise((resolve,reject) => {
+		return new Promise((resolve,reject) => {
 			axios.get(`/api/files/emails/${id}`)
 			.then((res) => {
 				commit('UPDATE_FILE_EMAILS', res.data)
@@ -232,11 +232,21 @@ const actions = {
 		})
 	},
 	addCampaignFile({commit}, data){
-		new Promise((resolve,reject) => {
+		return new Promise((resolve,reject) => {
 			axios.post('/api/campaigns/files/add', data)
 			.then((res) => {
-				//commit('UPDATE_CAMPAIGN', res.data)
+				commit('UPDATE_CAMPAIGN', res.data)
 				resolve(res.data.message);
+			})
+		})
+	},
+	changePassword({commit}, data){
+		return new Promise((resolve,reject) => {
+			axios.post('/api/settings/password', data)
+			.then((res) => {
+				if (res.data == 1)
+					resolve('1');
+				resolve('0')
 			})
 		})
 	}

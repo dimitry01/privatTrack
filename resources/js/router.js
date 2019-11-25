@@ -30,6 +30,9 @@ const router = new Router({
 			component: Login
 		},
 		{
+			path: '/api'
+		},
+		{
 			path: '/home',
 			component: Home,
 			meta: {

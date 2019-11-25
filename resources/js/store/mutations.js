@@ -95,7 +95,10 @@ const mutations = {
 		.join("\n")
 		.replace(/(^\[)|(\]$)/gm, "");
 		var blob = new Blob([csvContent], {type: "text/csv;charset=utf-8"});
-		saveAs(blob, `export_${payload.type}_${data.length}.csv`);
+		if (payload.type == 'audience')
+			saveAs(blob, `export_${payload.country}_${payload.action}_${data.length}.csv`);
+		else
+			saveAs(blob, `export_${payload.type}_${data.length}.csv`);
 	},
 	UPDATE_FILE_EMAILS(state, payload){
 		state.files.map(f => {
@@ -109,7 +112,7 @@ const mutations = {
 	UPDATE_CAMPAIGN(state, payload){
 		state.campaigns.map(c => {
 			if(c.id == payload.campaign){
-				
+				c.emails = payload.emails;
 			}
 			return c;
 		})

@@ -7,6 +7,28 @@
                         <h1>No Statistics collected for this campaign yet!</h1>
                     </vx-card>
                 </div>
+                 <div class="vx-col md:w-1/3 lg:w-1/3 xl:w-1/3 w-full mb-base">
+                    <vx-card>
+                        <div slot="no-body" class="mt-4">
+                            <div class="mt-5">
+                                <vs-tabs vs-alignment="fixed">
+                                    <vs-tab vs-label="CLICK">
+                                        <div class="vx-col w-full mb-2">
+                                            <vs-button class="inline w-full mb-2" color="primary" type="gradient" v-clipboard:copy="txt_script_click" v-clipboard:success="onCopy">Copy To Clipboard</vs-button>
+                                            <vs-textarea disabled class="w-full" height="251px" v-model="txt_script_click"/>
+                                        </div>
+                                    </vs-tab>
+                                    <vs-tab vs-label="OPEN">
+                                        <div class="vx-col w-full mb-2">
+                                            <vs-button class="inline w-full mb-2" color="primary" type="gradient" v-clipboard:copy="txt_script_open" v-clipboard:success="onCopy" >Copy To Clipboard</vs-button>
+                                            <vs-textarea disabled class="w-full" height="251px" v-model="txt_script_open"/>
+                                        </div>
+                                    </vs-tab>
+                                </vs-tabs>
+                            </div>
+                        </div>
+                    </vx-card>
+                </div>
             </div>
         </div>
         <div v-else>
@@ -83,6 +105,21 @@
                                                         </vs-td>
                                                         <vs-td>
                                                             <span>{{tr.clicks}}</span>
+                                                        </vs-td>
+                                                        <vs-td>
+                                                            <span>
+                                                                <vs-dropdown vs-trigger-click class="btnx"> 
+                                                                    <vs-button class="btn-drop " type="gradient" icon="expand_more"></vs-button>
+                                                                    <vs-dropdown-menu >
+                                                                        <vs-dropdown-item @click="exportData('open', campaign, tr.country)" >
+                                                                            Export Openers
+                                                                        </vs-dropdown-item>
+                                                                        <vs-dropdown-item @click="exportData('click', campaign, tr.country)" >
+                                                                            Export Clickers 
+                                                                        </vs-dropdown-item>
+                                                                    </vs-dropdown-menu>
+                                                                </vs-dropdown>
+                                                            </span>
                                                         </vs-td>
                                                     </vs-tr>
                                                 </template>
@@ -257,7 +294,27 @@ export default{
         },
         onCopy(){
             this.$vs.notify({title:'Success',text:'Code PHP Copied to clipboard',color: '#28C76F',position:'top-center'})
-        }
+        },
+        exportData(type, id, country){
+			if(type == 'open'){
+				this.$store.dispatch('exportAudience', {id: this.campaign, action: type, country: country})
+				.then(res => {
+					this.notify_export(res);
+				})
+			} else if (type == 'click') {
+				this.$store.dispatch('exportAudience', {id: this.campaign, action: type, country: country})
+				.then(res => {
+					this.notify_export(res);
+				})
+			}
+		},
+		notify_export(res)
+		{
+			if (res == '1')
+				this.$vs.notify({title:'Success',text:'Data exported',color: '#28C76F',position:'top-center'})
+			else
+				this.$vs.notify({title:'Error',text:'No Users Found',color: '#FF9F43',position:'top-center'})
+		}
     },
     created(){
         //this.browsersData;
@@ -349,5 +406,11 @@ export default{
 }
 .none {
     margin: 20px;
+}
+</style>
+
+<style scoped>
+.btnx {
+    top: 0px !important;
 }
 </style>

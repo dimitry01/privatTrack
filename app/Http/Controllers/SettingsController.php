@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\User;
+use Auth;
 
 class SettingsController extends Controller
 {
@@ -28,7 +29,18 @@ class SettingsController extends Controller
     }
     public function updateToken(Request $request){
         $this->updateDotEnv('AGENT_TOKEN', $request->token);
-    }
+	}
+	
+	public function updatePassword(Request $request)
+	{
+		$user = Auth::user();
+		if (Hash::check($request->old, $user->password)) {
+			$user->password = Hash::make($request->new);
+			$user->save();
+			return 1;
+		}
+		return 0;
+	}
 
     public function updateDotEnv($key, $newValue, $delim=''){
 
