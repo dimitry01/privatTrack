@@ -20,6 +20,7 @@ class ProcessActions implements ShouldQueue
     protected $hash;
     protected $action;
     protected $serv_data;
+    public $tries = 5;
     /**
      * Create a new job instance.
      *
@@ -45,7 +46,7 @@ class ProcessActions implements ShouldQueue
             if($campaign){
                 $visitor = Visitor::where('hash_md5','=',$this->hash)->first();
                 if($visitor){
-                    $action = Action::whereRaw('visitor_id = '.$visitor->id.' and campaign_id = '.$campaign->id)->first();
+                    $action = Action::whereRaw('visitor_id = '.$visitor->id.' and campaign_id = '.$campaign->id)->lockForUpdate()->first();
                     if(!$action)
                         $action = new Action();
                     if($action->open == 0){
@@ -66,7 +67,7 @@ class ProcessActions implements ShouldQueue
             if($campaign){
                 $visitor = Visitor::where('hash_md5','=',$this->hash)->first();
                 if($visitor){
-                    $action = Action::whereRaw('visitor_id = '.$visitor->id .' and campaign_id = '.$campaign->id)->first();
+                    $action = Action::whereRaw('visitor_id = '.$visitor->id .' and campaign_id = '.$campaign->id)->lockForUpdate()->first();
                     if(!$action)
                         $action = new Action();
                     if($action->click == 0){
@@ -90,7 +91,7 @@ class ProcessActions implements ShouldQueue
         $visitor->isp = $location['isp'];
         $visitor->user_agent = $serv_data['user_agent'] != null ? $serv_data['user_agent'] : 'none';
         //$agent = $this->getAgentData($serv_data['user_agent']);
-        $agent = $this->getAgentDevice($server['user_agent']);
+        $agent = $this->getAgentDevice($serv_data['user_agent']);
        /* if($agent){
             if(!array_key_exists("error",$agent)){
                 $visitor->device = $agent['device']['type'];
@@ -105,7 +106,6 @@ class ProcessActions implements ShouldQueue
                 $visitor->browser = $agent['browser'];
             }
         }
-        $visitor->refer = $server['refer'] != null ? $server['refer'] : 'none';
         $visitor->save();
     }
 
