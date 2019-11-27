@@ -19,6 +19,7 @@ class CreateCampaignsTable extends Migration
             $table->integer('clicks')->nullable();
             $table->integer('opens')->nullable();
             $table->integer('emails')->nullable();
+            $table->integer('status')->default('0');
             $table->bigInteger('country_id')->unsigned();
             $table->timestamps();
             $table->foreign('country_id')->references('id')->on('countries');

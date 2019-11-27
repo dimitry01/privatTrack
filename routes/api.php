@@ -31,6 +31,7 @@ Route::group(['middleware' => 'jwt.auth'], function ($router) {
     Route::post('/campaigns/add', 'CampaignsController@addCampaign');
     Route::post('/campaigns/files/add', 'CampaignsController@addFile');
     Route::post('/campaigns/export/audience', 'CampaignsController@exportAudience');
+    Route::post('/campaigns/status', 'CampaignsController@updateStatus');
 
     Route::get('/countries', 'CampaignsController@getCountries');
     Route::post('/countries/add', 'CampaignsController@addCountry');

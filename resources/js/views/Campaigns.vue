@@ -30,7 +30,7 @@
                         </div>
 						<vs-table :data="campaigns" pagination max-items="10" search>
 							<template slot="thead">
-								<vs-th sort-key="id">Campaign ID.</vs-th>
+								<vs-th sort-key="id">STATUS</vs-th>
 								<vs-th sort-key="name">NAME</vs-th>
                                 <vs-th sort-key="country.name">COUNTRY</vs-th>
 								<vs-th sort-key="clicks">CLICKS</vs-th>
@@ -42,7 +42,11 @@
 							<template slot-scope="{data}" >
 								<vs-tr :key="indextr" v-for="(tr, indextr) in data">
 									<vs-td :data="tr.id">
-										<span>#{{tr.id}}</span>
+										<!--span>#{{tr.id}}</span-->
+										<vs-switch color="success" :value="tr.status" @click="updateStatus(tr.id)">
+											<span slot="on">On</span>
+											<span slot="off">Off</span>
+										</vs-switch>
 									</vs-td>
 									<vs-td :data="tr.name">
 										<span>{{tr.name}}</span>
@@ -108,6 +112,7 @@ export default{
 	data() {
 		return {
 			loading: false,
+			switch1: false,
 			activePrompt: false,
 			audiencePrompt: false,
 			edit: {
@@ -197,6 +202,9 @@ export default{
 				this.$vs.notify({title:'Success',text:'Data exported',color: '#28C76F',position:'top-center'})
 			else
 				this.$vs.notify({title:'Error',text:'No Users Found',color: '#FF9F43',position:'top-center'})
+		},
+		updateStatus(id){
+			this.$store.dispatch('updateStatus', id);
 		}
 	},
 	computed: {

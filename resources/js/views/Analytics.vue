@@ -7,26 +7,36 @@
                         <h1>No Statistics collected for this campaign yet!</h1>
                     </vx-card>
                 </div>
-                 <div class="vx-col md:w-1/3 lg:w-1/3 xl:w-1/3 w-full m-auto mb-base">
+            </div>
+            <div class="vx-row">
+                 <div class="vx-col md:w-1/2 lg:w-1/2 xl:w-1/2 w-full mb-base">
                     <vx-card>
-                        <div slot="no-body" class="mt-4">
-                            <div class="mt-5">
-                                <vs-tabs vs-alignment="fixed">
-                                    <vs-tab vs-label="CLICK">
-                                        <div class="vx-col w-full mb-2">
-                                            <vs-button class="inline w-full mb-2" color="primary" type="gradient" v-clipboard:copy="txt_script_click" v-clipboard:success="onCopy">Copy To Clipboard</vs-button>
-                                            <vs-textarea disabled class="w-full" height="251px" v-model="txt_script_click"/>
-                                        </div>
-                                    </vs-tab>
-                                    <vs-tab vs-label="OPEN">
-                                        <div class="vx-col w-full mb-2">
-                                            <vs-button class="inline w-full mb-2" color="primary" type="gradient" v-clipboard:copy="txt_script_open" v-clipboard:success="onCopy" >Copy To Clipboard</vs-button>
-                                            <vs-textarea disabled class="w-full" height="251px" v-model="txt_script_open"/>
-                                        </div>
-                                    </vs-tab>
-                                </vs-tabs>
-                            </div>
-                        </div>
+                        <vs-tabs vs-alignment="fixed">
+                            <vs-tab vs-label="CLICK">
+                                <div class="vx-col w-full mb-2">
+                                    <vs-button class="inline w-full mb-2" color="primary" type="gradient" v-clipboard:copy="txt_script_click" v-clipboard:success="onCopy">Copy To Clipboard</vs-button>
+                                    <vs-textarea disabled class="w-full" height="251px" v-model="txt_script_click"/>
+                                </div>
+                            </vs-tab>
+                            <vs-tab vs-label="OPEN">
+                                <div class="vx-col w-full mb-2">
+                                    <vs-button class="inline w-full mb-2" color="primary" type="gradient" v-clipboard:copy="txt_script_open" v-clipboard:success="onCopy" >Copy To Clipboard</vs-button>
+                                    <vs-textarea disabled class="w-full" height="251px" v-model="txt_script_open"/>
+                                </div>
+                            </vs-tab>
+                        </vs-tabs>
+                    </vx-card>
+                </div>
+                <div class="vx-col md:w-1/2 lg:w-1/2 xl:w-1/2 w-full mb-base">
+                    <vx-card>
+                        <vs-list>
+                            <vs-list-header title="Files"></vs-list-header>
+                            <template v-for="file in filesData">
+                                <vs-list-item :key="file.id" :title="file.name" :subtitle="file.description">
+                                    <vs-chip color="primary">{{file.emails}}</vs-chip>
+                                </vs-list-item>
+                            </template>
+                        </vs-list>
                     </vx-card>
                 </div>
             </div>
@@ -235,6 +245,18 @@
                         </div>
                     </vx-card>
                 </div>
+                <div class="vx-col md:w-1/3 lg:w-1/3 xl:w-1/3 w-full mb-base">
+                    <vx-card>
+                        <vs-list>
+                            <vs-list-header title="Files"></vs-list-header>
+                            <template v-for="file in filesData">
+                                <vs-list-item :key="file.id" :title="file.name" :subtitle="file.description">
+                                    <vs-chip color="primary">{{file.emails}}</vs-chip>
+                                </vs-list-item>
+                            </template>
+                        </vs-list>
+                    </vx-card>
+                </div>
             </div>
         </div>
 	</div>
@@ -361,6 +383,9 @@ export default{
         osData(){
             if (this.opens)
             return this.$store.getters['analytics/osData'];
+        },
+        filesData(){
+            return this.$store.getters['analytics/filesData'];
         }
     },
 	components: {

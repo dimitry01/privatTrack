@@ -128,6 +128,8 @@ class ProcessActions implements ShouldQueue
         $agent->setUserAgent($data_agent);
 
         $browser = $agent->browser();
+        if ($browser == '0')
+            $browser = 'Others';
         if ($agent->isMobile())
             $device = "mobile";
         else if ($agent->isDesktop())
@@ -137,6 +139,8 @@ class ProcessActions implements ShouldQueue
         else
             $device = "other";
         $platform = $agent->platform();
+        if ($platform == '0')
+            $platform = 'Others';
         $data = ['os' => $platform, 'device' => $device, 'browser' => $browser];
         return $data;
     }

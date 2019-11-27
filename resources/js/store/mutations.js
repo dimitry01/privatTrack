@@ -116,6 +116,17 @@ const mutations = {
 			}
 			return c;
 		})
+	},
+	UPDATE_STATUS(state, id){
+		state.campaigns.map(c => {
+			if(c.id == id){
+				if(c.status == 1)
+					c.status = 0;
+				else
+					c.status = 1;
+			}
+			return c;
+		})
 	}
 
 }

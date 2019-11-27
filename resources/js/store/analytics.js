@@ -8,7 +8,7 @@ export default {
         countries: [],
         isps: [],
         os: [],
-        refers: [],
+        files: [],
         events: {
             device: 'opens',
             browser: 'opens',
@@ -103,8 +103,8 @@ export default {
         osData(state){
             return state.os;
         },
-        refersData(state){
-            return state.refers;
+        filesData(state){
+            return state.files;
         }
     },
     mutations: {
@@ -115,6 +115,7 @@ export default {
             state.clickers = (payload.clickers) ? payload.clickers : [];
             state.openers = (payload.openers) ? payload.openers : [];
             state.visitors = (payload.visitors) ? payload.visitors : [];
+            state.files = (payload.files) ? payload.files : [];
         },
         CHANGE_EVENT(state, data){
             if(data.from == 'device'){
@@ -133,6 +134,7 @@ export default {
             state.clickers = [];
             state.openers = [];
             state.visitors = [];
+            state.files = [];
         }
     },
     actions: {

@@ -257,6 +257,15 @@ const actions = {
 				resolve()
 			})
 		})
+	},
+	updateStatus({commit}, id){
+		return new Promise((resolve,reject) => {
+			axios.post('/api/campaigns/status', {id: id})
+			.then((res) => {
+				commit('UPDATE_STATUS', id);
+				resolve('1');
+			})
+		})
 	}
 }
 

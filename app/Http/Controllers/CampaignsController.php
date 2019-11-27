@@ -99,6 +99,16 @@ class CampaignsController extends Controller
         return ['type' => 'audience', 'result' => $visitors, 'country' => $request->country, 'action' => $request->action];
     }
     
+    function updateStatus(Request $request)
+    {
+        $campaign = Campaign::find($request->id);
+        if ($campaign->status == 1)
+            $campaign->status = 0;
+        else
+            $campaign->status = 1;
+        $campaign->save();
+        return '1';
+    }
     //------------------------------------------------
     //                      SETTERS
     //------------------------------------------------
@@ -219,7 +229,8 @@ class CampaignsController extends Controller
         $os = json_decode($stats->os);
         $openers = json_decode($campaign->stats->openers);
         $clickers = json_decode($campaign->stats->clickers);
-        $load = ['countries' => $countries, 'isp' => $isp, 'os' => $os, 'clickers' => $clickers, 'openers' => $openers, 'visitors' => $visitors];
+        $files = json_decode($campaign->files);
+        $load = ['countries' => $countries, 'isp' => $isp, 'os' => $os, 'clickers' => $clickers, 'openers' => $openers, 'visitors' => $visitors, 'files' => $files];
         return $load;
     }
 }
