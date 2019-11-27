@@ -44,11 +44,11 @@
         <div v-else>
             <div class="vx-row">
                 <div class="vx-col w-full sm:w-full md:w-1/2 lg:w-1/2 xl:w-1/2 mb-base">
-                    <statistics-card-line icon="BookOpenIcon" :statistic="opens" statisticTitle="Opens" :chartData="analyticsData.opensDesign" color='warning' type='area'></statistics-card-line>
+                    <statistics-card-line icon="BookOpenIcon" :statistic="opens" statisticTitle="Opens" :chartData="analyticsData.opensDesign" color='warning' type='area' v-on:export="exportEvent('open')"></statistics-card-line>
                 </div>
 
                 <div class="vx-col w-full sm:w-full md:w-1/2 lg:w-1/2 xl:w-1/2 mb-base">
-                    <statistics-card-line icon="PlayIcon" :statistic="clicks" statisticTitle="Clicks" :chartData="analyticsData.clicksDesign" color="primary" type='area'></statistics-card-line>
+                    <statistics-card-line icon="PlayIcon" :statistic="clicks" statisticTitle="Clicks" :chartData="analyticsData.clicksDesign" color="primary" type='area' v-on:export="exportEvent('click')"></statistics-card-line>
                 </div>
             </div>
 
@@ -92,8 +92,8 @@
 
                 <div class="vx-col md:w-1/3 lg:w-1/3 xl:w-1/3 w-full mb-base">
                     <vx-card>
-                        <div slot="no-body" class="mt-4">
-                            <div class="mt-5">
+                        <div slot="no-body">
+                            <div>
                                 <vs-tabs vs-alignment="fixed">
                                     <vs-tab vs-label="Countries">
                                         <div v-if="countriesData.length > 0">
@@ -329,7 +329,20 @@ export default{
 					this.notify_export(res);
 				})
 			}
-		},
+        },
+        exportEvent(type){
+            if(type == 'open'){
+				this.$store.dispatch('exportOpens', this.campaign)
+				.then(res => {
+					this.notify_export(res);
+				})
+			} else if (type == 'click') {
+				this.$store.dispatch('exportClicks', this.campaign)
+				.then(res => {
+					this.notify_export(res);
+				})
+			}
+        },
 		notify_export(res)
 		{
 			if (res == '1')

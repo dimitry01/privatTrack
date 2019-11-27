@@ -77,12 +77,6 @@
 												<vs-dropdown-item @click="exportData('noopen',tr.id)" >
 													Export No-Openers 
 												</vs-dropdown-item>
-												<vs-dropdown-item @click="exportData('open',tr.id)" >
-													Export Openers 
-												</vs-dropdown-item>
-												<vs-dropdown-item  @click="exportData('click',tr.id)" divider>
-													Export Clickers
-												</vs-dropdown-item>
 												<vs-dropdown-item  @click="editCampaign(tr.id)" divider>
 													Add File
 												</vs-dropdown-item>
@@ -170,18 +164,8 @@ export default{
 			})
 		},
 		exportData(type, id){
-			if(type == 'open'){
-				this.$store.dispatch('exportOpens', id)
-				.then(res => {
-					this.notify_export(res);
-				})
-			} else if (type == 'noopen') {
+			if (type == 'noopen') {
 				this.$store.dispatch('exportNoOpen', id)
-				.then(res => {
-					this.notify_export(res);
-				})
-			} else if (type == 'click') {
-				this.$store.dispatch('exportClicks', id)
 				.then(res => {
 					this.notify_export(res);
 				})

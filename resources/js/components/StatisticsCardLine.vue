@@ -2,6 +2,9 @@
 	<vx-card class="overflow-hidden">
 		<div slot="no-body">
 			<div class="p-6 pb-0" :class="{'flex justify-between flex-row-reverse items-center': iconRight}">
+				<div class="float-right">
+					<vs-button radius class="exprt" color="primary" type="gradient" icon="save_alt" @click="$emit('export')"></vs-button>
+				</div>
 				<feather-icon :icon="icon" class="p-3 inline-flex rounded-full" :class="[`text-${color}`, {'mb-4': !iconRight}]" :style="{background: `rgba(var(--vs-${color}),.15)`}"></feather-icon>
 				<div>
 					<h2 class="mb-1 font-bold">{{ statistic }}</h2>
@@ -87,3 +90,9 @@ export default{
 	}
 }
 </script>
+
+<style >
+.exprt .material-icons {
+	font-size: 19px !important;
+}
+</style>
